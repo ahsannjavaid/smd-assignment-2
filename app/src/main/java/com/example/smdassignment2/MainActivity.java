@@ -1,23 +1,41 @@
 package com.example.smdassignment2;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    private static final int ADD_ACTIVITY_REQUEST_CODE = 100;
+    List<Restaurant> restaurantList = new ArrayList<>();
+    RestaurantAdapter adapter = new RestaurantAdapter(restaurantList);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        List<Restaurant> restaurantList = new ArrayList<>();
+        Button btnAdd = findViewById(R.id.btnAdd);
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, AddRestaurantActivity.class);
+                startActivityForResult(intent, ADD_ACTIVITY_REQUEST_CODE);
+            }
+        });
+
         restaurantList.add(new Restaurant("4.4", "Al-Fazal", "Gazi Road, Lahore", "+92 333 333 3333", "Our Faluda is a Hot Item."));
         restaurantList.add(new Restaurant("4.5", "KFC", "Akbar Chowk, Lahore", "+92 333 323 1234", "Zinger is very tasty."));
         restaurantList.add(new Restaurant("4.2", "Leans Kitchen", "Model Town, Lahore", "+92 325 323 0934", "Timings are Sahr and Iftar."));
@@ -37,8 +55,25 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        RestaurantAdapter adapter = new RestaurantAdapter(restaurantList);
-
         recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == ADD_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
+            if (data != null) {
+                // Retrieve the values from AddActivity
+                String name = data.getStringExtra("name");
+                String location = data.getStringExtra("location");
+                String phone = data.getStringExtra("phone");
+                String description = data.getStringExtra("description");
+                String rating = data.getStringExtra("rating");
+
+                restaurantList.add(new Restaurant(rating, name, location, phone, description));
+                Toast.makeText(MainActivity.this, "Restaurant added successfully!", Toast.LENGTH_LONG).show();
+                adapter.notifyDataSetChanged();
+            }
+        }
     }
 }
