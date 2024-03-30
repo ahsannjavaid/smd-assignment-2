@@ -11,6 +11,14 @@
         android:text="@string/add_restaurant"
         android:id="@+id/btnAdd" />
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/etSearchName"
+        android:inputType="text"
+        android:hint="@string/search_restaurant"
+        android:autofillHints="null"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
