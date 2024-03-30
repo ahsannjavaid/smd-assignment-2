@@ -31,9 +31,21 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
         Restaurant restaurant = restaurantList.get(position);
         holder.textRating.setText(restaurant.getRating());
         holder.textName.setText(restaurant.getName());
-        holder.textLocation.setText(restaurant.getLocation());
         holder.textPhone.setText(restaurant.getPhone());
-        holder.textDescription.setText(restaurant.getDescription());
+
+        // Limiting address text to show
+        String location = restaurant.getLocation();
+        if (location.length() > 25) {
+            location = location.substring(0, 25) + "...";
+        }
+        holder.textLocation.setText(location);
+
+        // Limiting description text to show
+        String description = restaurant.getDescription();
+        if (description.length() > 25) {
+            description = description.substring(0, 25) + "...";
+        }
+        holder.textDescription.setText(description);
     }
 
     @Override

@@ -2,7 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="110dp"
+    android:layout_height="120dp"
     android:paddingVertical="6dp"
     tools:context=".RestaurantFragment">
 
@@ -14,7 +14,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:text="@string/ratings"
             android:gravity="center"
             android:background="@color/yellow"
@@ -24,81 +24,80 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="2"
+            android:layout_weight="5"
             android:orientation="vertical"
             android:gravity="center"
-            android:background="@color/light_yellow">
+            android:background="@color/light_yellow"
+            android:paddingVertical="5dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <TextView
+                <ImageView
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="20dp"
                     android:layout_weight="1"
-                    android:text="N"
-                    android:gravity="center" />
+                    android:src="@drawable/restaurant"
+                    android:contentDescription="@string/restaurant"
+                    />
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
+                    android:layout_weight="4"
                     android:text="@string/restaurant_name"
-                    android:gravity="center"
                     android:id="@+id/tvName"
                     android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp">
+
+                <ImageView
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="20dp"
                     android:layout_weight="1"
-                    android:text="N"
-                    android:gravity="center" />
+                    android:src="@drawable/mapsandflags" />
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
+                    android:layout_weight="4"
                     android:text="@string/location"
-                    android:gravity="center"
                     android:id="@+id/tvLocation" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp">
+                <ImageView
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="20dp"
                     android:layout_weight="1"
-                    android:text="N"
-                    android:gravity="center" />
+                    android:src="@drawable/phonecall" />
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
+                    android:layout_weight="4"
                     android:text="@string/phone"
-                    android:gravity="center"
                     android:id="@+id/tvPhone" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp">
+                <ImageView
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="20dp"
                     android:layout_weight="1"
-                    android:text="N"
-                    android:gravity="center" />
+                    android:src="@drawable/description" />
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
+                    android:layout_weight="4"
                     android:text="@string/description"
-                    android:gravity="center"
                     android:id="@+id/tvDescription" />
             </LinearLayout>
 
@@ -109,19 +108,21 @@
             android:layout_weight="1"
             android:orientation="vertical"
             android:gravity="center"
-            android:background="@color/light_yellow">
-            <TextView
+            android:background="@color/light_yellow"
+            android:paddingVertical="5dp">
+            <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:text="N"
-                android:gravity="center" />
-            <TextView
+                android:src="@drawable/telephonecall"
+                android:paddingVertical="5dp" />
+
+            <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:text="N"
-                android:gravity="center" />
+                android:paddingVertical="5dp"
+                android:src="@drawable/chat" />
         </LinearLayout>
 
     </LinearLayout>
